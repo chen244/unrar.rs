@@ -1,9 +1,9 @@
 use native;
-use std::result::Result;
 use num::FromPrimitive;
-use std::fmt;
 use std::error;
 use std::ffi;
+use std::fmt;
+use std::result::Result;
 
 enum_from_primitive! {
     #[derive(PartialEq, Eq, Debug, Clone, Copy)]
@@ -93,16 +93,16 @@ impl<T> fmt::Display for UnrarError<T> {
 impl<T> UnrarError<T> {
     pub fn new(code: Code, when: When, data: T) -> Self {
         UnrarError {
-            code: code,
-            when: when,
+            code,
+            when,
             data: Some(data),
         }
     }
 
     pub fn from(code: Code, when: When) -> Self {
         UnrarError {
-            code: code,
-            when: when,
+            code,
+            when,
             data: None,
         }
     }
